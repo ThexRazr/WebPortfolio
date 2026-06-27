@@ -1,4 +1,5 @@
 // src/components/sections/Hero.jsx
+import { useTheme } from '../hooks/ThemeContext'
 import { IconGitHub, IconLinkedIn, IconResume, IconMail } from '../ui/Icons'
 
 const iconLinks = [
@@ -9,6 +10,8 @@ const iconLinks = [
 ]
 
 export default function Hero() {
+  const { dark } = useTheme()
+
   return (
     <section
       id="hero"
@@ -19,7 +22,9 @@ export default function Hero() {
 
         {/* Left — tall rectangular headshot */}
         <div className="flex-shrink-0 w-full md:w-80">
-          <div className="w-full h-96 md:h-full min-h-96 rounded-2xl overflow-hidden bg-blue-50 shadow-md">
+          <div className={`w-full h-96 md:h-full min-h-96 rounded-2xl overflow-hidden shadow-md ${
+            dark ? 'bg-slate-700' : 'bg-blue-50'
+          }`}>
             <img
               src="/images/gown_portrait.JPEG"
               alt="Rodrigo Bazan"
@@ -34,22 +39,28 @@ export default function Hero() {
 
           {/* Name */}
           <h1
-            className="text-6xl md:text-7xl font-extrabold text-gray-950 leading-tight tracking-wide"
+            className={`text-6xl md:text-7xl font-extrabold leading-tight tracking-wide ${
+              dark ? 'text-slate-100' : 'text-gray-950'
+            }`}
             style={{ fontVariant: 'small-caps' }}
           >
             Rodrigo Bazan
           </h1>
 
           {/* Tagline */}
-          <p className="text-base text-blue-500 font-medium tracking-wide">
+          <p className={`text-base font-medium tracking-wide ${
+            dark ? 'text-blue-400' : 'text-blue-500'
+          }`}>
             Computer Engineer · UF '26 · Software, Embedded Systems &amp; Power
           </p>
 
           {/* Divider */}
-          <div className="w-37 h-px bg-blue-300" />
+          <div className={`w-37 h-px ${dark ? 'bg-blue-700' : 'bg-blue-300'}`} />
 
           {/* Intro blurb */}
-          <p className="text-sm text-gray-600 font-medium leading-loose max-w-md">
+          <p className={`text-sm font-medium leading-loose max-w-md ${
+            dark ? 'text-slate-300' : 'text-gray-600'
+          }`}>
             Hi there! I'm a Computer Engineering student at UF who loves building things
             that sit at the intersection of hardware and software — from embedded systems
             to full-stack apps. I'm currently seeking roles in NYC for Summer 2026.
@@ -64,7 +75,9 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="text-gray-500 hover:text-blue-600 transition-colors"
+                className={`transition-colors hover:text-blue-600 ${
+                  dark ? 'text-slate-400' : 'text-gray-500'
+                }`}
               >
                 <Icon size={26} />
               </a>
@@ -78,11 +91,13 @@ export default function Hero() {
       <div className="mt-16 flex flex-col items-center gap-2">
         <a
           href="#projects"
-          className="text-xs font-semibold tracking-widest text-gray-500 hover:text-blue-600 transition-colors flex flex-col items-center gap-2"
+          className={`text-s font-semibold tracking-widest transition-colors hover:text-blue-600 flex flex-col items-center gap-2 ${
+            dark ? 'text-slate-500' : 'text-gray-500'
+          }`}
           style={{ fontVariant: 'small-caps' }}
         >
           View My Work
-          <span className="block w-px h-8 bg-gray-400" />
+          <span className={`block w-px h-8 ${dark ? 'bg-slate-600' : 'bg-gray-400'}`} />
         </a>
       </div>
 
