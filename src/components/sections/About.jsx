@@ -8,6 +8,7 @@ export default function About() {
     <section id="about" className="py-28 px-8">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-16 items-start">
 
+        {/* Label */}
         <h2
           className={`text-3xl font-bold tracking-wide md:w-48 flex-shrink-0 ${
             dark ? 'text-slate-100' : 'text-gray-900'
@@ -17,6 +18,7 @@ export default function About() {
           About
         </h2>
 
+          {/* Prose */}
         <div className="flex flex-col gap-5 max-w-xl">
           <p className={`text-sm font-light leading-loose ${
             dark ? 'text-slate-400' : 'text-gray-500'

@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { IconX } from './Icons'
 import Badge from './Badge'
 import { useTheme } from '../hooks/ThemeContext'
+import LightboxImage from './LightboxImage'
 
 const Section = ({ label, children, dark }) => (
   <div className="flex flex-col gap-2">
@@ -52,9 +53,9 @@ export default function ProjectModal({ project, isOpen, onClose }) {
               dark ? 'bg-slate-800' : 'bg-white'
             }`}
           >
-            <div className="max-w-2xl mx-auto px-8 py-10 flex flex-col gap-8">
+            <div className="max-w-5xl mx-auto px-8 py-10 flex flex-col gap-8">
 
-              {/* Header */}
+              {/* Header — title, badges, close button */}
               <div className="flex items-start justify-between gap-4">
                 <div className="flex flex-col gap-3">
                   <h2
@@ -84,13 +85,48 @@ export default function ProjectModal({ project, isOpen, onClose }) {
                 </button>
               </div>
 
-              {/* Detail sections */}
-              <Section label="Problem" dark={dark}>{project.detail.problem}</Section>
-              <Section label="Solution" dark={dark}>{project.detail.solution}</Section>
-              <Section label="Architecture" dark={dark}>{project.detail.architecture}</Section>
-              <Section label="Challenges" dark={dark}>{project.detail.challenges}</Section>
-              <Section label="What I'd Improve" dark={dark}>{project.detail.improvements}</Section>
+              {/* Body — two columns: text left, gallery right */}
+              <div className="flex flex-col md:flex-row gap-10">
 
+                {/* Left — detail sections */}
+                <div className="flex flex-col gap-6 flex-1">
+                  <Section label="Problem" dark={dark}>{project.detail.problem}</Section>
+                  <Section label="Solution" dark={dark}>{project.detail.solution}</Section>
+                  <Section label="Architecture" dark={dark}>{project.detail.architecture}</Section>
+                  <Section label="Challenges" dark={dark}>{project.detail.challenges}</Section>
+                  <Section label="What I'd Improve" dark={dark}>{project.detail.improvements}</Section>
+                </div>
+
+                {/* Right — photo gallery (3 slots, click to zoom) */}
+                <div className="flex flex-col gap-4 md:w-64 flex-shrink-0">
+                  {(project.images || []).map((src, i) => (
+                    <LightboxImage
+                      key={i}
+                      src={src}
+                      alt={`${project.title} screenshot ${i + 1}`}
+                    />
+                  ))}
+                  {/* Render empty placeholder slots if fewer than 3 images */}
+                  {Array.from({ length: Math.max(0, 3 - (project.images?.length || 0)) }).map((_, i) => (
+                    <div
+                      key={`placeholder-${i}`}
+                      className={`w-full h-40 rounded-xl border flex items-center justify-center ${
+                        dark ? 'bg-slate-700 border-slate-600' : 'bg-blue-50 border-gray-100'
+                      }`}
+                    >
+                      <span
+                        className={`text-xs tracking-widest ${
+                          dark ? 'text-slate-500' : 'text-gray-300'
+                        }`}
+                        style={{ fontVariant: 'small-caps' }}
+                      >
+                        Photo {(project.images?.length || 0) + i + 1}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+              </div>
             </div>
           </motion.div>
         </>
