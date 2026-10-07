@@ -8,12 +8,18 @@ import About from './components/sections/About'
 import Contact from './components/sections/Contact'
 import ProjectModal from './components/ui/ProjectModal'
 import { useModal } from './components/hooks/useModal'
+import { useDarkMode } from './components/hooks/useDarkMode'
+import { ThemeContext } from './components/hooks/ThemeContext'
 
 export default function App() {
   const { selectedProject, isOpen, openModal, closeModal } = useModal()
+  const { dark, toggleDark } = useDarkMode()
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900 font-sans">
+    <ThemeContext.Provider value={{ dark, toggleDark }}>
+    <div className={`min-h-screen font-sans transition-colors duration-300 ${
+      dark ? 'bg-gray-1000 text-slate-100' : 'bg-gray-50 text-gray-900'
+    }`}>
       <Navbar />
       <main>
         <Hero />
@@ -25,5 +31,6 @@ export default function App() {
       <Footer />
       <ProjectModal project={selectedProject} isOpen={isOpen} onClose={closeModal} />
     </div>
+  </ThemeContext.Provider>
   )
 }

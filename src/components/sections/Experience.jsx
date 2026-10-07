@@ -1,21 +1,26 @@
 // src/components/sections/Experience.jsx
 import { experiences } from '../../data/experience'
 import ExperienceCard from '../ui/ExperienceCard'
+import { useTheme } from '../hooks/ThemeContext'
 
 export default function Experience() {
+  const { dark } = useTheme()
+
   return (
-    <section id="experience" className="py-28 px-8 bg-white">
+    <section id="experience" className="py-28 px-8">
       <div className="max-w-5xl mx-auto flex flex-col gap-12">
 
         {/* Section header */}
         <h2
-          className="text-3xl font-bold text-gray-900 tracking-wide"
+          className={`text-3xl font-bold tracking-wide ${
+            dark ? 'text-slate-100' : 'text-gray-900'
+          }`}
           style={{ fontVariant: 'small-caps' }}
         >
           Experience
         </h2>
 
-        {/* Cards — side by side on desktop, stacked on mobile */}
+          {/* Cards — side by side on desktop, stacked on mobile */}
         <div className="flex flex-col md:flex-row gap-6">
           {experiences.map((exp) => (
             <ExperienceCard
