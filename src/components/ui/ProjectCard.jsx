@@ -46,7 +46,7 @@ export default function ProjectCard({ project, onClick }) {
         >
           {project.title}
         </h3>
-        <p className={`text-sm leading-relaxed font-light ${
+        <p className={`text-m leading-relaxed font-dark ${
           dark ? 'text-slate-400' : 'text-gray-500'
         }`}>
           {project.tagline}

@@ -6,12 +6,12 @@ export const projects = [
     title: "Athlete Tracking System",
     tagline: "Real-time player positioning via trilateration using UWB anchors.",
     category: "embedded",
-    image: "/images/athlete-tracking.png",
+    image: "/images/soccersense.PNG",
     // Additional modal gallery images
     images: [
-      "/images/athlete-tracking-2.png",
-      "/images/athlete-tracking-3.png",
-      "/images/athlete-tracking-4.png",
+      "/images/fieldsize.PNG",
+      "/images/ctrlpanel.PNG",
+      "/images/housing.PNG",
     ],
     stack: ["ESP32", "Python", "UWB"],
     detail: {
@@ -51,9 +51,9 @@ export const projects = [
     image: "/images/mips-cpu.png",
     // Additional modal gallery images
     images: [
-      "/images/mips-cpu-2.png",
-      "/images/mips-cpu-3.png",
-      "/images/mips-cpu-4.png",
+      "/images/zoomleft.PNG",
+      "/images/alu_fulltest.PNG",
+      "/images/MIPSvhd.png",
     ],
     stack: ["VHDL", "FPGA", "Quartus"],
     detail: {
@@ -69,12 +69,12 @@ export const projects = [
     title: "NBA Fan App",
     tagline: "Full-stack sports app with live ESPN data and user accounts.",
     category: "software",
-    image: "/images/nba-app.png",
+    image: "/images/ballerzonly.PNG",
     // Additional modal gallery images
     images: [
-      "/images/nba-app-2.png",
-      "/images/nba-app-3.png",
-      "/images/nba-app-4.png",
+      "/images/nbafavs.PNG",
+      "/images/feed2.PNG",
+      "/images/profile.PNG",
     ],
     stack: ["React", "Node.js", "MySQL"],
     detail: {
